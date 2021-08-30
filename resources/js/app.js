@@ -1,3 +1,4 @@
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -17,8 +18,9 @@ require('./components/Pages/LandingPage');
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LandingPage from './components/Pages/LandingPage';
+import NotFound from './components/Pages/NotFound';
 import ProductPage from './components/Pages/ProductPage';
 import ShoppingCart from './components/Pages/ShoppingCart';
 import Success from './components/Pages/Succes';
@@ -27,15 +29,15 @@ import Slides from './components/Slides';
 const App = () => {
     return (
         <Router>
-            <Routes>
+            <Switch>
+                <Route exact path="/"><LandingPage /></Route>
                 <Route exact path="/slides"><Slides /></Route>
                 <Route exact path="/product"><ProductPage /></Route>
-                <Route exact path="/"><LandingPage /></Route>
                 <Route exact path="/shoppingcart"><ShoppingCart /></Route>
                 <Route exact path="/success"><Success /></Route>
-            </Routes>
+            </Switch>
         </Router>
-    )
+    );
 }
 if (document.getElementById('app')) {
     ReactDOM.render(<App />, document.getElementById('app'));

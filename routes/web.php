@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
+});
+//to handle switch route in react
+Route::get('/{path?}', function () {
+    return view('main');
+})->where('path','.*');
+Route::get('/{path?}', function () {
+    return view('pages.dashboard');
+})->where('path','dashboard')->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/products/index', function() {
+    return view('pages/products/index');
+});
+Route::get('/products/create', function() {
+    return view('pages/products/create');
 });
 
-Route::get('/{path?}', function () {
-    return view('welcome');
-})->where('path','.*');
+require __DIR__.'/auth.php';
+
+Route::resource('product',ProductController::class);
