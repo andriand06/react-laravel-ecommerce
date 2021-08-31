@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductGalleryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,13 +29,8 @@ Route::get('/dashboard', function () {
     return view('pages.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/products/index', function() {
-    return view('pages/products/index');
-});
-Route::get('/products/create', function() {
-    return view('pages/products/create');
-});
-
 require __DIR__.'/auth.php';
 
 Route::resource('product',ProductController::class);
+
+Route::resource('product-galleries',ProductGalleryController::class);
