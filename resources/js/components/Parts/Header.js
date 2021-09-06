@@ -10,7 +10,14 @@ const Header = () => {
                         <i className=" fa fa-envelope"></i> hello.shayna@gmail.com
                     </div>
                     <div className="phone-service">
-                        <i className=" fa fa-phone"></i> +628 22081996
+                        <i className=" fa fa-phone"><a href="tel:+6281363883325"></a>+62 813 6388 3325</i> 
+                    </div>
+                </div>
+                <div className="ht-right">
+                    <div className="auth-service">
+                        <a href="/register" className="">Daftar</a>
+                        <span> | </span>
+                        <a href="/login" className="">Login</a>
                     </div>
                 </div>
             </div>

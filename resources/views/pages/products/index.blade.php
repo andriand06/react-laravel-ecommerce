@@ -9,6 +9,12 @@
                     <div class="card-body">
                         <h4 class="box-title">Daftar Barang</h4>
                     </div>
+                    @if (Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success')}}
+                    </div>
+                    
+                @endif
                     <div class="card-body">
                         <div class="table-stats order-table ov-h">
                             <table class="table">
@@ -31,15 +37,16 @@
                                         <td>{{ $i->price}}</td>
                                         <td>{{ $i->quantity}}</td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm">
+                                            <a href="{{ route('product.gallery',  $i->id)}}" class="btn btn-info btn-sm">
                                                 <i class="fa fa-picture-o"></i>
                                             </a>
                                             <a href="{{ route('product.edit', $i->id)}}" class="btn btn-pencil btn-sm">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <form action="{{ route('product.destroy', $i->id)}}" method="POST" class="d-inline">
+                                                @csrf
                                                 @method('delete')
-                                                <button class="btn btn-danger btn-sm">
+                                                <button class="btn btn-danger btn-sm" onclick="return confirm('hapus data ini?')">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>

@@ -19,7 +19,7 @@ const Banner = () => {
                                     <li className="w-icon active">
                                         <a href="#"><i className="icon_bag_alt"></i></a>
                                     </li>
-                                    <li className="quick-view"><a href="/product">+ Quick View</a></li>
+                                    <li className="quick-view"><a href="/products">+ Quick View</a></li>
                                 </ul>
                             </div>
                             <div className="pi-text">

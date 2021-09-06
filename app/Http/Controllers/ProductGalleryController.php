@@ -52,6 +52,7 @@ class ProductGalleryController extends Controller
         );
 
         ProductGallery::create($data);
+        session()->flash('success','Berhasil Tambah Data!');
         return redirect()->route(
             'product-galleries.index'
         );
@@ -99,6 +100,9 @@ class ProductGalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = ProductGallery::findOrFail($id);
+        $item->delete();
+        session()->flash('success','Berhasil Hapus Data');
+        return redirect()->route('product-galleries.index');
     }
 }

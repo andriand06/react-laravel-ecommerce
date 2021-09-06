@@ -3929,7 +3929,23 @@ ol {
     height: 100vh;
 }
 
-
+.overflow {
+    overflow-x: scroll;
+}
+.header-top .ht-right .auth-service {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #252525;
+}
+.header-top .ht-right .auth-service a{
+    text-decoration: none;
+    margin-right: 8px;
+    
+}
+.header-top .ht-right .auth-service a:hover {
+    opacity: 0.7;
+    font-size: larger;
+}
 /* ------------------------------ Responsive Media Styles ---------------------------- */
 
 @media only screen and (min-width: 1200px) and (max-width: 1920px) {

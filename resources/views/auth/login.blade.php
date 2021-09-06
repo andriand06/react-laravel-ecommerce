@@ -47,6 +47,11 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+                @if (Route::has('register'))
+                    <a href="{{ route('register')}}" class="underline text-sm text-gray-600 hover:text-gray-900 ml-3 mr-4">
+                        Register
+                    </a>
+                @endif
 
                 <x-button class="ml-3">
                     {{ __('Log in') }}

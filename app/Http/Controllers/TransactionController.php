@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Http\Requests\ProductRequest;
-use App\Models\ProductGallery;
 
-class ProductController extends Controller
+class TransactionController extends Controller
 {
     public function __construct()
     {
@@ -21,9 +19,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Product::All();
-        return view('pages.products.index')->with([ 'items' => $items]);
+        $items = Transaction::all();
+        return view('pages.transactions.index')->with(['items' => $items]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('pages.products.create');
+        //
     }
 
     /**
@@ -40,15 +39,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        //menggunakan support str untuk slug
-        $data['slug'] = Str::slug($request->name);
-
-        Product::create($data);
-        session()->flash('success','Berhasil Tambah Data!');
-        return redirect()->route('product.index');
+        //
     }
 
     /**
@@ -59,7 +52,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Transaction::with('details.product')->findOrFail($id);
+        return view('pages.transactions.show')->with([
+            'item' => $item
+        ]); 
     }
 
     /**
@@ -70,9 +66,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $item = Product::findOrFail($id);
-
-        return view('pages.products.edit')->with(['item' => $item]);
+        $item = Transaction::findOrFail($id);
+        return view('pages.transactions.edit')->with(
+            [
+                'item' => $item
+            ]
+            );
     }
 
     /**
@@ -82,15 +81,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
-
-        $item = Product::findOrFail($id);
+        $item = Transaction::findOrFail($id);
         $item->update($data);
         session()->flash('success','Berhasil Update Data!');
-        return redirect()->route('product.index');
+        return redirect()->route('transaction.index');
     }
 
     /**
@@ -101,24 +98,23 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $item = Product::findOrFail($id);
+        $item = Transaction::findOrFail($id);
         $item->delete();
-        ProductGallery::where('products_id', $id)->delete();
         session()->flash('success','Berhasil Hapus Data');
-        return redirect()->route('product.index');
+        return redirect()->route('transaction.index');
     }
 
-    public function gallery($id)
+    public function setStatus(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
-        $items = ProductGallery::where('products_id',$id)->get();
-        //dd($items);
-        return view('pages.products.gallery')->with(
-            [
-                'product' => $product,
-                'items' => $items
-            ]
-            );
+        $request->validate([
+            'status' => 'required|in:PENDING,SUCCESS,FAILED'
+        ]);
+
+        $item = Transaction::findOrFail($id);
+        //dd($item->transaction_status    );
+        $item->transaction_status = $request->status;
+        $item->save();
+
+        return redirect()->route('transaction.index');
     }
-    
 }
