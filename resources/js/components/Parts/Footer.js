@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="col-lg-5">
                     <div className="footer-left">
                         <div className="footer-logo">
-                            <a href="#"><img src="img/logo_website_shayna_white.png" alt="" /></a>
+                            <a href="#"><img src="../img/logo_website_shayna_white.png" alt="" /></a>
                         </div>
                         <ul>
                             <li>Address: Setra Duta, Bandung</li>

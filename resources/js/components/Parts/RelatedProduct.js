@@ -15,7 +15,7 @@ const RelatedProduct = () => {
                 <div className="col-lg-3 col-sm-6">
                     <div className="product-item">
                         <div className="pi-pic">
-                            <img src="img/products/women-1.jpg" alt="" />
+                            <img src="../img/products/women-1.jpg" alt="" />
                             <ul>
                                 <li className="w-icon active">
                                     <a href="#"><i className="icon_bag_alt"></i></a>
@@ -38,7 +38,7 @@ const RelatedProduct = () => {
                 <div className="col-lg-3 col-sm-6">
                     <div className="product-item">
                         <div className="pi-pic">
-                            <img src="img/products/women-2.jpg" alt="" />
+                            <img src="../img/products/women-2.jpg" alt="" />
                             <ul>
                                 <li className="w-icon active">
                                     <a href="#"><i className="icon_bag_alt"></i></a>
@@ -60,7 +60,7 @@ const RelatedProduct = () => {
                 <div className="col-lg-3 col-sm-6">
                     <div className="product-item">
                         <div className="pi-pic">
-                            <img src="img/products/women-3.jpg" alt="" />
+                            <img src="../img/products/women-3.jpg" alt="" />
                             <ul>
                                 <li className="w-icon active">
                                     <a href="#"><i className="icon_bag_alt"></i></a>
@@ -82,7 +82,7 @@ const RelatedProduct = () => {
                 <div className="col-lg-3 col-sm-6">
                     <div className="product-item">
                         <div className="pi-pic">
-                            <img src="img/products/women-4.jpg" alt="" />
+                            <img src="../img/products/women-4.jpg" alt="" />
                             <ul>
                                 <li className="w-icon active">
                                     <a href="#"><i className="icon_bag_alt"></i></a>

@@ -32,7 +32,7 @@ const App = () => {
             <Switch>
                 <Route exact path="/"><LandingPage /></Route>
                 <Route exact path="/slides"><Slides /></Route>
-                <Route exact path="/products"><ProductPage /></Route>
+                <Route exact path="/products/:id"><ProductPage /></Route>
                 <Route exact path="/shoppingcart"><ShoppingCart /></Route>
                 <Route exact path="/success"><Success /></Route>
             </Switch>

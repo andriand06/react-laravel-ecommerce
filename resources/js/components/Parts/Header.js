@@ -28,7 +28,7 @@ const Header = () => {
                     <div className="col-lg-2 col-md-2">
                         <div className="logo">
                             <a href="./index.html">
-                                <img src="img/logo_website_shayna.png" alt="" />
+                                <img src="../img/logo_website_shayna.png" alt="" />
                             </a>
                         </div>
                     </div>
@@ -47,7 +47,7 @@ const Header = () => {
                                             <tbody>
                                                 <tr>
                                                     <td className="si-pic">
-                                                        <img src="img/select-product-1.jpg" alt="" />
+                                                        <img src="../img/select-product-1.jpg" alt="" />
                                                     </td>
                                                     <td className="si-text">
                                                         <div className="product-selected">
@@ -61,7 +61,7 @@ const Header = () => {
                                                 </tr>
                                                 <tr>
                                                     <td className="si-pic">
-                                                        <img src="img/select-product-2.jpg" alt="" />
+                                                        <img src="../img/select-product-2.jpg" alt="" />
                                                     </td>
                                                     <td className="si-text">
                                                         <div className="product-selected">

@@ -26,6 +26,9 @@ Route::get('/', function () {
 Route::get('/{path?}', function () {
     return view('main');
 })->where('path','products|slides|shoppingcart|success');
+Route::get('/{path?}/{id?}', function () {
+    return view('main');
+})->where('path','products');
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 //kasi name products.gallery supaya bisa dipakai di route('products.gallery');
